@@ -1,0 +1,20 @@
+# Nunca: credenciales de sesión
+.x-cookies.txt
+*cookies*.txt
+chrome-copy/
+.chrome-copy/
+
+# Nunca: datos scrapeados (tus bookmarks son tuyos)
+*.jsonl
+bookmarks*.json
+images/
+videos/
+frames/
+transcripts/
+shots/
+
+# Entorno
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
