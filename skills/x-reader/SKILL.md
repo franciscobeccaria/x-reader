@@ -24,7 +24,11 @@ managed prefs: the port still doesn't listen and no `DevToolsActivePort` file
 appears. The same binary opens it fine with its own `--user-data-dir`. It's a
 deliberate guard against exactly this.
 
-**The fix is to copy the profile.** The copy carries the cookies (including a
+**Preferred: the bot's own browser.** If `bot-browser` is installed (a real
+Chrome with its own permanent profile, logged in to X by hand once), `run.sh`
+uses it on port 9333 and copies nothing. `X_USE_BOT_BROWSER=0` forces the copy.
+
+**Fallback: copy the profile.** The copy carries the cookies (including a
 Google SSO session) but not the lock, so Chrome does open the port there. No
 manual login needed.
 

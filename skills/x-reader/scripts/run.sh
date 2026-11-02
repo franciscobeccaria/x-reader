@@ -9,7 +9,15 @@ SRC="$HOME/Library/Application Support/Google/Chrome"
 PROFILE="${X_CHROME_PROFILE:-Default}"   # el perfil de Chrome donde tenés la sesión de X
                                          # (X_CHROME_PROFILE="Profile 1" para el segundo perfil)
 
-if ! curl -s --max-time 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
+# Si está el navegador del bot (bot-browser, perfil propio y permanente), usarlo:
+# no hace falta copiar el perfil personal. X_USE_BOT_BROWSER=0 fuerza la copia.
+BOT_PORT="${BOT_BROWSER_PORT:-9333}"
+if [ "${X_USE_BOT_BROWSER:-1}" = 1 ] && command -v bot-browser > /dev/null; then
+  bot-browser start > /dev/null && PORT="$BOT_PORT"
+fi
+PORT="${PORT:-9222}"
+
+if [ "$PORT" = 9222 ] && ! curl -s --max-time 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
   echo "→ copiando sesión del perfil…"
   rm -rf "$COPY"; mkdir -p "$COPY/Default"
   cp "$SRC/Local State" "$COPY/Local State" 2>/dev/null || true
@@ -27,7 +35,7 @@ if ! curl -s --max-time 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; t
 fi
 
 S="npx agent-browser --session xreal"
-$S connect 9222 > /dev/null
+$S connect "$PORT" > /dev/null
 $S open "https://x.com/i/bookmarks" > /dev/null
 sleep 4
 
