@@ -54,6 +54,10 @@ Set `X_CHROME_PROFILE` if your X session lives in a profile other than
   encryption key to the process. Export a Netscape `cookies.txt` instead
   (see `references/pipeline.md`).
 
+**Never open `x.com/home` or any timeline**: it marks tweets as seen and the
+user loses them. Only bookmarks, profiles and status URLs. Since Nov 2026
+`/i/bookmarks` redirects to `/i/history` (tabs "Guardados" and "Me gusta").
+
 ## The pipeline
 
 Each step writes a JSONL you can stop at. Run only what the question needs.
