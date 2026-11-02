@@ -4,7 +4,7 @@ Uso: ./enrich.py [desde_fecha] [--in archivo] [--out archivo]"""
 import json, subprocess, sys, time, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SESSION = ["npx", "agent-browser", "--session", os.environ.get("X_SESSION", "x")]
+SESSION = ["npx", "agent-browser", "--session", os.environ.get("X_SESSION", "xreal")]
 JS = open(os.path.join(HERE, "enrich.js"), encoding="utf-8").read()
 
 def run(args, timeout=90):

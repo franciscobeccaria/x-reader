@@ -72,6 +72,14 @@ Each step writes a JSONL you can stop at. Run only what the question needs.
 ./scripts/search.py agent browser      # search the text
 ```
 
+**Videos without cookies (default with bot-browser).** `video.py` opens each
+tweet in the bot's browser, reads the public `.m3u8` playlist the player
+requests from `video.twimg.com` (matched to the main tweet by the poster's
+video id, since replies can carry videos too), and `ffmpeg -c copy` downloads
+it at full resolution. No `cookies.txt` is exported. Long videos are capped at
+`X_MAX_FRAMES` (120) frames; for talks, the transcript carries the content.
+`X_USE_BOT_BROWSER=0` goes back to yt-dlp + cookies.
+
 `enrich.py` takes a date (`YYYY-MM-DD`) or `ALL`. All scripts honor
 `X_SESSION` for the agent-browser session name.
 

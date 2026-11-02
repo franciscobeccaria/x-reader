@@ -6,11 +6,11 @@ recortamos con sips usando getBoundingClientRect() * devicePixelRatio.
 
 Uso:  ./shots.py urls.txt [dir_salida]
       urls.txt = una por linea, formato  <url>  <nombre-archivo>
-Env:  X_SESSION (default "x")
+Env:  X_SESSION (default "xreal")
 """
 import json, subprocess, time, os, sys
 
-S = ["npx", "agent-browser", "--session", os.environ.get("X_SESSION", "x")]
+S = ["npx", "agent-browser", "--session", os.environ.get("X_SESSION", "xreal")]
 
 def run(a, t=180):
     try:
