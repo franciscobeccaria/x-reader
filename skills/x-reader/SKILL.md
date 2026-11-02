@@ -140,3 +140,12 @@ pkill -f "chrome-copy"; rm -f .x-cookies.txt
 
 Never commit the copied profile, the cookies file, or the scraped JSONL — they
 carry your session and your data. The included `.gitignore` covers them.
+
+## Keep this skill improving
+
+When you hit a trap that is not written here (a redirect, a selector that
+changed, a flag that behaves differently, a step that fails), fix the run and
+then add one line to **The traps** with the symptom and the fix, and commit it in
+this skill's repo with a short message. Do not rewrite sections, do not add
+anything you did not verify in the run, and never write private content
+(mail, chats, tweets, cookies) into the skill.
